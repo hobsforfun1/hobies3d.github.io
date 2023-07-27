@@ -29,20 +29,29 @@
 				var camera = new BABYLON.ArcRotateCamera("Camera", 0, (3 * Math.PI) / 8, 20, playerSphere, scene);
 
 				camera.attachControl(canvas, true);
-			}
-			function drawPoint(x, z, zrot, scene) {
-				var point = BABYLON.MeshBuilder.CreateBox('point', {width: 10, height: 0.5, depth: 12}, scene);
+
+				var gravityVector = new BABYLON.Vector3(0, -9, 0);
+				scene.enablePhysics(gravityVector, new BABYLON.CannonJSPlugin());
+
+				playerSphere.physicsImpostor = new BABYLON.PhysicsImpostor(playerSphere, BABYLON.PhysicsImpostor.SphereImpostor, {
+						mass: 1,
+						restitution: 0.9
+				}, scene);
+				
+				BABYLON.MeshBuilder.CreateBox('point', {width: 10, height: 0.5, depth: 12}, scene);
+				
 				point.material = new BABYLON.StandardMaterial("pointMaterial", scene);
 				point.material.diffuseColor = new BABYLON.Color3(1, 0, 1);
 				point.position = new BABYLON.Vector3(x, 0.1, z);
 				point.rotation.y = zrot;
 				point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.BoxImpostor, {
-				mass: 0,
-				restitution: 0.9
+					mass: 0,
+					restitution: 0.9
 				}, scene);
-				}
 
-				drawPoint(0, 0, 0, scene);
+
+			}
+			
 		</script>
 		<style>
 			html, body {
