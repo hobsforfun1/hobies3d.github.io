@@ -38,18 +38,18 @@
 						restitution: 0.9
 				}, scene);
 				
-				BABYLON.MeshBuilder.CreateBox('point', {width: 10, height: 0.5, depth: 12}, scene);
+				// BABYLON.MeshBuilder.CreateBox('point', {width: 10, height: 0.5, depth: 12}, scene);
 				
-				point.material = new BABYLON.StandardMaterial("pointMaterial", scene);
-				point.material.diffuseColor = new BABYLON.Color3(1, 0, 1);
-				point.position = new BABYLON.Vector3(x, 0.1, z);
-				point.rotation.y = zrot;
-				point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.BoxImpostor, {
-					mass: 0,
-					restitution: 0.9
-				}, scene);
+				// point.material = new BABYLON.StandardMaterial("pointMaterial", scene);
+				// point.material.diffuseColor = new BABYLON.Color3(1, 0, 1);
+				// point.position = new BABYLON.Vector3(x, 0.1, z);
+				// point.rotation.y = zrot;
+				// point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.BoxImpostor, {
+				// 	mass: 0,
+				// 	restitution: 0.9
+				// }, scene);
 
-				drawPoint(0,-10, 0, scene);
+				// drawPoint(0,-10, 0, scene);
 
 				BABYLON.SceneLoader.ImportMesh(null, "resources/", "bridge.obj", scene, function(scene) {});
 
