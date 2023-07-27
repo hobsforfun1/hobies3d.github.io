@@ -51,7 +51,9 @@
 
 				// drawPoint(0,-10, 0, scene);
 
-				BABYLON.MeshBuilder.ImportMesh(null, "resources/", "bridge.obj", scene, function(scene) {});
+				BABYLON.SceneLoader.ImportMesh(null, "resources/", "bridge.obj", scene, function(meshes) {
+					
+				});
 
 			}
 			
