@@ -51,9 +51,11 @@
 
 				// drawPoint(0,-10, 0, scene);
 
-				BABYLON.SceneLoader.ImportMeshAsync("", "resources/", "bridge.obj", scene, function(meshes) {
-					var track = meshes[0];
-				});
+				// BABYLON.SceneLoader.ImportMeshAsync("", "resources/", "bridge.obj", scene, function(meshes) {
+				// 	var track = meshes[0];
+				// });
+				
+				BABYLON.SceneLoader.Append("/resources","bridge.obj",scene,function()
 
 			}
 			
