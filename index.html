@@ -20,9 +20,9 @@
 				});
 								
 				function drawPoint(x, z, zrot, scene) {
-					var point = BABYLON.MeshBuilder.CreateBox('point', {
-					width: 10,
-					height: 0.5,
+					var point = BABYLON.MeshBuilder.CreateCylinder('point', {
+					diameter: 10,
+					height: 1,
 					depth: 12
 					}, scene);
 					
@@ -30,7 +30,7 @@
 					point.material.diffuseColor = new BABYLON.Color3(0.8, 0, 0);
 					point.position = new BABYLON.Vector3(x, 0.1, z);
 					point.rotation.y = zrot;
-					point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.BoxImpostor, {
+					point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.CylinderImpostor, {
 					mass: 0,
 					restitution: 0.9
 					}, scene);
