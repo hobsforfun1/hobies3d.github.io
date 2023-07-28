@@ -43,6 +43,11 @@
 				engine.runRenderLoop(scene.render.bind(scene));
 				window.addEventListener('resize', engine.resize.bind(engine));
 
+				function win(){
+					window.location.reload();
+					alert("you escaped the circus!");
+				}
+				
 				function lost(){
 					alert("you will be lost in the circus forever!");
 					window.location.reload();
@@ -93,7 +98,13 @@
 						playerSphere.applyImpulse(right, playerSphere.getAbsolutePosition());
 					}
 
-					if (playerSphere.position.y < -10) {
+					var currentT = tLookup(xFn, zFn, 500, playerSphere.position.x, playerSphere.position.z);
+					
+					if (currentT > 0.99) {
+						win();
+					}
+
+					if (playerSphere.position.y < -30) {
 						lost();
 					}
 				});
@@ -116,8 +127,20 @@
 				}
 
 				drawParametric(xFn, zFn, 0, 1, 350, scene);
+				
+				function tLookup(xFn, zFn, res, x, z) {
+					var minT = 0;
+					var minDist = Infinity;
+					for (var t = 0; t <= 1; t += (1 / res)) {
+						var dist = Math.pow(x - xFn(t), 2) + Math.pow(z - zFn(t), 2);
+						if (dist < minDist) {
+							minDist = dist;
+							minT = t;
+						}
+					}
+					return minT;
+				}
 			}
-			
 		</script>
 		<style>
 			html, body {
