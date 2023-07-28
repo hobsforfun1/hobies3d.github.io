@@ -27,7 +27,7 @@
 					}, scene);
 					
 					point.material = new BABYLON.StandardMaterial("pointMaterial", scene);
-					point.material.diffuseColor = new BABYLON.Color3(1, 0, 1);
+					point.material.diffuseColor = new BABYLON.Color3(0.8, 0, 0);
 					point.position = new BABYLON.Vector3(x, 0.1, z);
 					point.rotation.y = zrot;
 					point.physicsImpostor = new BABYLON.PhysicsImpostor(point, BABYLON.PhysicsImpostor.BoxImpostor, {
